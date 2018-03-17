@@ -45,30 +45,42 @@ public class BoundedGrid<E>
 		return oldOccupant;
 	}
 
+	// Use getNumRows and getNumCols
 	// Returns true if loc is valid in this grid, false otherwise.
 	// Precondition:  loc is not null.
 	public boolean isValid(Location loc)
 	{
-		//hint:  use getNumRows and getNumCols
-
-		throw new RuntimeException("INSERT MISSING CODE HERE");
+		if(loc != null) {
+			if(loc.getCol() < this.getNumCols() 
+				&& loc.getRow() < this.getNumRows() 
+				&& loc.getCol() >= 0 
+				&& loc.getRow() >= 0) return true;
+			else return false;
+		}
+		else return false;
 	}
 
 	// Removes the object at location loc from this grid and returns
 	// the object that was removed (or null if the location is unoccupied).
+	// Use the put method to store a null at this location
 	// Precondition:  loc is valid in this grid.
 	public E remove(Location loc)
 	{
-		//hint:  use the put method to store a null at this location
-
-		throw new RuntimeException("INSERT MISSING CODE HERE");
+		E oldOccupant = get(loc);
+		occupantArray[loc.getRow()][loc.getCol()] = null;
+		return oldOccupant;
 	}
 
 	// Returns a list of all occupied locations in this grid.
+	// Use the get method to determine if a location is empty
 	public List<Location> getOccupiedLocations()
 	{
-		//hint:  use the get method to determine if a location is empty
-
-		throw new RuntimeException("INSERT MISSING CODE HERE");
+		List<Location> locList = new ArrayList<Location>();
+		for(int i = 0; i < getNumRows(); i++)
+			for(int j = 0; j < getNumCols(); j++)
+				if(occupantArray[i][j] != null) {
+					locList.add(new Location(i, j));
+				}
+		return locList;
 	}
 }

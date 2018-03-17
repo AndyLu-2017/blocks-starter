@@ -2,10 +2,8 @@
 import java.awt.Color;
 import java.util.List;
 
-public class GridMonster
-{
-	public static void main(String[] args)
-	{
+public class GridMonster {
+	public static void main(String[] args) {
 		System.out.println("TESTING WITH STRINGS");
 		gridTests1();
 
@@ -15,8 +13,7 @@ public class GridMonster
 		System.out.println("\nYOUR CODE PASSED ALL THE TESTS!  8^)");
 	}
 
-	private static void gridTests1()
-	{
+	private static void gridTests1() {
 		System.out.println("Level 1: Getting number of rows and columns");
 
 		final BoundedGrid<String> GRID0 = new BoundedGrid<String>(1, 2);
@@ -26,12 +23,11 @@ public class GridMonster
 		if (GRID0.getNumCols() != 2)
 			throw new RuntimeException("getNumCols is dumb.");
 
-
 		System.out.println("Level 2: Testing if valid");
 
-		if (! GRID0.isValid(new Location(0, 0)))
+		if (!GRID0.isValid(new Location(0, 0)))
 			throw new RuntimeException("isValid is dumb.");
-		if (! GRID0.isValid(new Location(0, 1)))
+		if (!GRID0.isValid(new Location(0, 1)))
 			throw new RuntimeException("isValid is dumb.");
 		if (GRID0.isValid(new Location(0, 2)))
 			throw new RuntimeException("isValid is dumb.");
@@ -44,15 +40,14 @@ public class GridMonster
 
 		final BoundedGrid<String> GRID1 = new BoundedGrid<String>(2, 1);
 
-		if (! GRID1.isValid(new Location(0, 0)))
+		if (!GRID1.isValid(new Location(0, 0)))
 			throw new RuntimeException("isValid is dumb.");
-		if (! GRID1.isValid(new Location(1, 0)))
+		if (!GRID1.isValid(new Location(1, 0)))
 			throw new RuntimeException("isValid is dumb.");
 		if (GRID1.isValid(new Location(2, 0)))
 			throw new RuntimeException("isValid is dumb.");
 		if (GRID1.isValid(new Location(0, 1)))
 			throw new RuntimeException("isValid is dumb.");
-
 
 		System.out.println("Level 3: Getting, putting, and removing");
 
@@ -85,7 +80,6 @@ public class GridMonster
 		if (value != null)
 			throw new RuntimeException("remove is dumb.");
 
-
 		System.out.println("Level 4: Getting occupied locations");
 
 		List<Location> locs = GRID1.getOccupiedLocations();
@@ -95,23 +89,18 @@ public class GridMonster
 		locs = GRID1.getOccupiedLocations();
 		if (locs.size() != 1)
 			throw new RuntimeException("getOccupiedLocations is dumb.");
-		if (! locs.get(0).equals(new Location(1, 0)))
+		if (!locs.get(0).equals(new Location(1, 0)))
 			throw new RuntimeException("getOccupiedLocations is dumb.");
 		GRID1.put(new Location(0, 0), SECOND);
 		locs = GRID1.getOccupiedLocations();
 		if (locs.size() != 2)
 			throw new RuntimeException("getOccupiedLocations is dumb.");
-		if (!(
-			   (locs.get(0).equals(new Location(0, 0)) &&
-			    locs.get(1).equals(new Location(1, 0)))
-			   ||
-			   (locs.get(0).equals(new Location(1, 0)) &&
-			    locs.get(1).equals(new Location(0, 0)))))
+		if (!((locs.get(0).equals(new Location(0, 0)) && locs.get(1).equals(new Location(1, 0)))
+				|| (locs.get(0).equals(new Location(1, 0)) && locs.get(1).equals(new Location(0, 0)))))
 			throw new RuntimeException("getOccupiedLocations is dumb.");
 	}
 
-	private static void gridTests2()
-	{
+	private static void gridTests2() {
 		System.out.println("Level 5: Putting into an empty location");
 
 		final Block BLOCK1 = new Block();
@@ -129,9 +118,8 @@ public class GridMonster
 			throw new RuntimeException("putSelfInGrid is dumb.");
 		if (BLOCK1.getGrid() != GRID2)
 			throw new RuntimeException("putSelfInGrid is dumb.");
-		if (! BLOCK1.getLocation().equals(new Location(0, 2)))
+		if (!BLOCK1.getLocation().equals(new Location(0, 2)))
 			throw new RuntimeException("putSelfInGrid is dumb.");
-
 
 		System.out.println("Level 6: Removing from grid");
 
@@ -143,7 +131,6 @@ public class GridMonster
 			throw new RuntimeException("removeSelfFromGrid is dumb.");
 		if (BLOCK1.getLocation() != null)
 			throw new RuntimeException("removeSelfFromGrid is dumb.");
-
 
 		System.out.println("Level 7: Putting into an occupied location");
 
@@ -158,11 +145,10 @@ public class GridMonster
 			throw new RuntimeException("putSelfInGrid is dumb.");
 		if (BLOCK2.getGrid() != GRID2)
 			throw new RuntimeException("putSelfInGrid is dumb.");
-		if (! BLOCK2.getLocation().equals(new Location(0, 2)))
+		if (!BLOCK2.getLocation().equals(new Location(0, 2)))
 			throw new RuntimeException("putSelfInGrid is dumb.");
 		if (GRID2.get(new Location(0, 2)) != BLOCK2)
 			throw new RuntimeException("putSelfInGrid is dumb.");
-
 
 		System.out.println("Level 8: Moving to an empty location");
 
@@ -170,11 +156,10 @@ public class GridMonster
 		DISPLAY.showBlocks();
 		if (GRID2.get(new Location(0, 2)) != null)
 			throw new RuntimeException("moveTo is dumb.");
-		if (! BLOCK2.getLocation().equals(new Location(0, 4)))
+		if (!BLOCK2.getLocation().equals(new Location(0, 4)))
 			throw new RuntimeException("moveTo is dumb.");
 		if (GRID2.get(new Location(0, 4)) != BLOCK2)
 			throw new RuntimeException("moveTo is dumb.");
-
 
 		System.out.println("Level 9: Moving to an occupied location");
 
@@ -190,11 +175,10 @@ public class GridMonster
 			throw new RuntimeException("moveTo is dumb.");
 		if (BLOCK2.getGrid() != GRID2)
 			throw new RuntimeException("moveTo is dumb.");
-		if (! BLOCK2.getLocation().equals(new Location(0, 1)))
+		if (!BLOCK2.getLocation().equals(new Location(0, 1)))
 			throw new RuntimeException("moveTo is dumb.");
 		if (GRID2.get(new Location(0, 1)) != BLOCK2)
 			throw new RuntimeException("moveTo is dumb.");
-
 
 		System.out.println("Level 10: Moving to its own location");
 
@@ -202,7 +186,7 @@ public class GridMonster
 		DISPLAY.showBlocks();
 		if (BLOCK2.getGrid() != GRID2)
 			throw new RuntimeException("moveTo is dumb.");
-		if (! BLOCK2.getLocation().equals(new Location(0, 1)))
+		if (!BLOCK2.getLocation().equals(new Location(0, 1)))
 			throw new RuntimeException("moveTo is dumb.");
 		if (GRID2.get(new Location(0, 1)) != BLOCK2)
 			throw new RuntimeException("moveTo is dumb.");
